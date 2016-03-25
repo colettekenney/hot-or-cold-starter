@@ -13,14 +13,6 @@ $(document).ready(function(){
   	});
 
 
-//---- THIS IS THE SECRET NUMBER FUNCTION --------//
-//------------------------------------------------//
-  	function secretNumber() {
-  		return Math.floor(Math.random()*100)+1;
-  		checkDifference(userGuess, secretNumber);
-  	}
-//------------------------------------------------//  	
-
 //----------- INPUT VALIDATION SECTION -----------//
 //------------------------------------------------//
   	
@@ -34,6 +26,18 @@ $(document).ready(function(){
 	  		secretNumber();
 	  	}
 	});
+//------------------------------------------------// 
+
+
+//---- THIS IS THE SECRET NUMBER FUNCTION --------//
+//------------------------------------------------//
+  	function secretNumber() {
+  		var secretNumber = Math.floor(Math.random()*100)+1;
+  		return secretNumber;
+  		checkDifference(userGuess, secretNumber);
+  	}
+//------------------------------------------------//  
+
 
 //---- THIS IS THE CHECK-DIFFERENCE FUNCTION -----//
 //---- THIS IS THE MAIN OPERATION OF THE GAME ----//
@@ -57,7 +61,7 @@ $(document).ready(function(){
 			document.getElementById("feedback").innerHTML("You Won! Click New Game to Play Again.")
 			countAppend();
 		}
-	};
+	}
 //------------------------------------------------//
 
 
@@ -80,15 +84,15 @@ $(document).ready(function(){
 		else if (difference >= 5 && difference <= 9) {
 			document.getElementById("feedback").innerHTML = "Hot";
 		}
-		else (difference >= 1 && difference <=4) {
+		else  {
 			document.getElementById("feedback").innerHTML = "Very Very Hot";
 		}
-	};
+	}
 //------------------------------------------------//
 
 
 
-//---- THIS IS THE COUNT-APPEND FUNCTION -------------//
+//---- THIS IS THE COUNT-APPEND FUNCTION ---------//
 //------------------------------------------------//
 	function countAppend() {
 		if (userGuess != secretNumber) {
@@ -100,7 +104,7 @@ $(document).ready(function(){
 			var count = 1;
 			$('ul#guessList').append('<li>' + $('#userGuess').val() + '</li>');
 		}
-	};
+	}
 //------------------------------------------------//
 
 
