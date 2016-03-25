@@ -17,21 +17,23 @@ $(document).ready(function(){
 //------------------------------------------------//
   	function secretNumber() {
   		return Math.floor(Math.random()*100)+1;
+  		checkDifference(userGuess, secretNumber);
   	}
 //------------------------------------------------//  	
 
 //----------- INPUT VALIDATION SECTION -----------//
 //------------------------------------------------//
-  	$('#guessButton').click(function() {
-  		var userGuess = +(document.getElementById("userGuess").value);
-  		
-  		if(userGuess < 1 || userGuess > 100) {
-  			alert("Please Enter a Number Between 1 and 100");
-  		}	
-  		else {
-  			checkDifference(userGuess, secretNumber);
-  		}
-  	});
+  	
+	$('#guessButton').click(function() {
+		var userGuess = +(document.getElementById("userGuess").value);
+	 		
+		if(userGuess < 1 || userGuess > 100) {
+			alert("Please Enter a Number Between 1 and 100");
+	  	}	
+	  	else {
+	  		secretNumber();
+	  	}
+	});
 
 //---- THIS IS THE CHECK-DIFFERENCE FUNCTION -----//
 //---- THIS IS THE MAIN OPERATION OF THE GAME ----//
