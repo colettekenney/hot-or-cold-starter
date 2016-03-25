@@ -14,8 +14,8 @@ $(document).ready(function(){
 
 //------------GLOBAL VARIABLES SECTION------------//
 //------------------------------------------------//
-	var secretNumber = secretNumber();
-	var difference = checkDifference();
+//	var secretNumber = secretNumber();
+//	var difference = checkDifference();
 
 //------------------------------------------------//
 
@@ -65,7 +65,7 @@ $(document).ready(function(){
 		}
 
 		else {
-			document.getElementById("feedback").innerHTML("You Won! Click New Game to Play Again.")
+			document.getElementById("feedback").innerHTML = "You Won! Click New Game."
 			countAppend();
 		}
 	}
