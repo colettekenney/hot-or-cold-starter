@@ -23,6 +23,7 @@ $(document).ready(function(){
 			alert("Please Enter a Number Between 1 and 100");
 	  	}	
 	  	else {
+	  		return userGuess;
 	  		secretNumber();
 	  	}
 	});
@@ -94,7 +95,7 @@ $(document).ready(function(){
 
 //---- THIS IS THE COUNT-APPEND FUNCTION ---------//
 //------------------------------------------------//
-	function countAppend() {
+	function countAppend(userGuess, secretNumber) {
 		if (userGuess != secretNumber) {
 			var count = 1;
 			count ++;
