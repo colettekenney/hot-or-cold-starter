@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
-	
+	var secretNumber = Math.floor(Math.random()*100)+1;
+	var count = 0;
+
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
@@ -23,51 +25,33 @@ $(document).ready(function(){
 //----------- INPUT VALIDATION SECTION -----------//
 //------------------------------------------------//
   	
-	$('#guessButton').click(function() {
+	$('form').submit(function(e) {
+		e.preventDefault();
 		var userGuess = +(document.getElementById("userGuess").value);
+		$("#userGuess").val("");
 	 		
 		if(userGuess < 1 || userGuess > 100) {
 			alert("Please Enter a Number Between 1 and 100");
 	  	}	
 	  	else {
-	  		secretNumber();
+	  		count++;
+	  		checkDifference(userGuess);
+	  		countAppend(userGuess);
 	  	}
 	});
 //------------------------------------------------// 
 
 
-//---- THIS IS THE SECRET NUMBER FUNCTION --------//
-//------------------------------------------------//
-  	function secretNumber() {
-  		var secretNumber = Math.floor(Math.random()*100)+1;
-  		return secretNumber;
-  		checkDifference(userGuess, secretNumber);
-  	}
-//------------------------------------------------//  
-
-
 //---- THIS IS THE CHECK-DIFFERENCE FUNCTION -----//
 //---- THIS IS THE MAIN OPERATION OF THE GAME ----//
 //------------------------------------------------//
-  	function checkDifference (userGuess, secretNumber) {
-		if (userGuess > secretNumber) {
-			var difference = userGuess - secretNumber;
-			return difference;
-			feedback(difference);
-			countAppend();
-
-		}
-		else if (userGuess < secretNumber) {
-			var difference = secretNumber - userGuess;
-			return difference;
-			feedback(difference);
-			countAppend();
-		}
-
+  	function checkDifference (userGuess) {
+		if (userGuess == secretNumber) {
+			$("#feedback").html("You Won! Click New Game!"); 
+		}	
 		else {
-			document.getElementById("feedback").innerHTML = "You Won! Click New Game."
-			countAppend();
-		}
+			feedback(Math.abs(userGuess - secretNumber));
+		}	
 	}
 //------------------------------------------------//
 
@@ -77,22 +61,22 @@ $(document).ready(function(){
 //------------------------------------------------//
 	function feedback(difference) {
 		if (difference >= 50) {
-			document.getElementById("feedback").innerHTML = "Ice Ice Cold";
+			$("#feedback").html("Ice Ice Cold");
 		}
 		else if (difference >= 30 && difference <= 49) {
-			document.getElementById("feedback").innerHTML = "Ice Cold";
+			$("#feedback").html("Ice Cold");
 		}
 		else if (difference >= 20 && difference <= 29) {
-			document.getElementById("feedback").innerHTML = "Cold";
+			$("#feedback").html("Cold");
 		}
 		else if (difference >= 10 && difference <= 19) {
-			document.getElementById("feedback").innerHTML = "Warm";
+			$("#feedback").html("Warm");
 		}
 		else if (difference >= 5 && difference <= 9) {
-			document.getElementById("feedback").innerHTML = "Hot";
+			$("#feedback").html("Hot");
 		}
 		else  {
-			document.getElementById("feedback").innerHTML = "Very Very Hot";
+			$("#feedback").html("Very Very Hot");
 		}
 	}
 //------------------------------------------------//
@@ -101,17 +85,9 @@ $(document).ready(function(){
 
 //---- THIS IS THE COUNT-APPEND FUNCTION ---------//
 //------------------------------------------------//
-	function countAppend(userGuess, secretNumber) {
-		
-		if (userGuess != secretNumber) {
-			var count = 1;
-			count ++;
-			$('ul#guessList').append('<li>' + $('#userGuess').val() + '</li>');
-		}
-		else {
-			var count = 1;
-			$('ul#guessList').append('<li>' + $('#userGuess').val() + '</li>');
-		}
+	function countAppend(userGuess) {
+			$("#count").html(count);
+			$('ul#guessList').append('<li>' + userGuess + '</li>');
 	}
 //------------------------------------------------//
 
