@@ -2,6 +2,7 @@
 $(document).ready(function(){
 //------ DECLARE VARIABLES WHEN PAGE LOADS -------//
 	var secretNumber = Math.floor(Math.random()*100)+1;
+	console.log(secretNumber);
 	var count = 0;
 	var gameOver = false;
 
@@ -65,6 +66,8 @@ $(document).ready(function(){
 //because this is the easiest case, if not, the code keeps running
   	function checkDifference (userGuess) {
 		if (userGuess == secretNumber) {
+			//here we give feedback that they won and tell
+			//them to click new game
 			$("#feedback").html("You Won! Click New Game!"); 
 		}	
 		else {
@@ -119,6 +122,19 @@ $(document).ready(function(){
 	function feedback(x) {
 		$("#feedback").html(x);
 	}
+
+//------- THIS IS THE NEW-GAME FUNCTION ----------//
+	$('.new').click(function() {
+		secretNumber = Math.floor(Math.random()*100)+1;
+		console.log(secretNumber);
+		count = 0;
+		updateCount();
+		gameOver = false;
+		$('ul#guessList').html("");
+		feedback('Make a Guess!');
+
+	
+	});
 
 //- THIS CODE WAS PART OF JEYA'S ORIGINAL PROJECT-//
 	/*--- Display information modal box ---*/
