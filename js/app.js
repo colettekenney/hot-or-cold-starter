@@ -126,7 +126,7 @@ $(document).ready(function(){
 //------- THIS IS THE NEW-GAME FUNCTION ----------//
 	$('.new').click(function() {
 		secretNumber = Math.floor(Math.random()*100)+1;
-		console.log(secretNumber);
+		//console.log(secretNumber);
 		count = 0;
 		updateCount();
 		gameOver = false;
