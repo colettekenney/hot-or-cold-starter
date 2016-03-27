@@ -6,15 +6,13 @@ $(document).ready(function(){
 	var count = 0;
 	var gameOver = false;
 
-
 //---------------- GET USER GUESS ----------------//
 	$('form').submit(function(e) {
 		//using $('form').submit prevents either pressing the
 		//enter key, or clicking submit button from running
 		//the default submit function of the form
 		e.preventDefault();
-		//as long as gameOver == false the rest of the 
-		//code will run
+		
 		if (gameOver == false) {
 			//we create a new variable for the userGuess
 			//we use Math.round so it's an integer
@@ -25,23 +23,23 @@ $(document).ready(function(){
 			//console.log was used here to make sure we were
 			//getting the userGuess
 			//console.log(userGuess);
-			
+		
 			//then we increment the count, 
 			count++;
 			//console.log was used to make sure we were incrementing
 			//the count
 			//console.log(count);
-			
+		
 			//then we write the count to the #count id
 			updateCount();
-			
+		
 			//then we append the userGuess to the ul
 			appendGuess(userGuess);
-			
-			//then we check the difference between userGuess and secretNumber
-			checkDifference(userGuess);
-		}
 		
+			//then we check the difference between userGuess and secretNumber
+			checkDifference(userGuess);	
+		}
+			
 	});
 
 
@@ -69,6 +67,9 @@ $(document).ready(function(){
 			//here we give feedback that they won and tell
 			//them to click new game
 			$("#feedback").html("You Won! Click New Game!"); 
+			//here changing gameOver to true stops user from being
+			//able to enter more guesses because the game is over!
+			gameOver = true;
 		}	
 		else {
 			//here we are calling another function but 
