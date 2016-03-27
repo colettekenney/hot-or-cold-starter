@@ -17,17 +17,13 @@ $(document).ready(function(){
 			//we create a new variable for the userGuess
 			//we use Math.round so it's an integer
 			var userGuess = Math.round($('#userGuess').val());
+			//console.log(userGuess);
 			//this next line resets the value in the form to
 			//blank after receiving the user's guess
 			$('#userGuess').val('');
-			//console.log was used here to make sure we were
-			//getting the userGuess
-			//console.log(userGuess);
-		
+					
 			//then we increment the count, 
 			count++;
-			//console.log was used to make sure we were incrementing
-			//the count
 			//console.log(count);
 		
 			//then we write the count to the #count id
@@ -130,8 +126,7 @@ $(document).ready(function(){
 		//console.log(secretNumber);
 		count = 0;
 		updateCount();
-		gameOver = false;
-		$('ul#guessList').html("");
+		$('#guessList').html("");
 		feedback('Make a Guess!');
 
 	
